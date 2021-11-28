@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="SocketCliente"/>
-	<classpathentry kind="src" path="SocketServidor"/>
+	<classpathentry kind="src" path="RMICliente"/>
+	<classpathentry kind="src" path="RMIServidor"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
