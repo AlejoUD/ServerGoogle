@@ -1,6 +1,6 @@
 package Cliente;
 
-import es.deusto.ingenieria.sd.rmi.server.IHelloAPI;
+import Servidor.*;
 
 
 public class Client {
