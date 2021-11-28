@@ -1,4 +1,3 @@
-package es.deusto.ingenieria.sd.auctions.server.gateway;
 
 import java.rmi.Naming;
 
