@@ -1,9 +1,7 @@
-package Main;
+package Servidor;
 
 import java.rmi.Naming;
 
-import Remoto.IRemoteFacade;
-import Remoto.RemoteFacade;
 
 public class MainProgram {
 
