@@ -1,6 +1,9 @@
-package Dominio;
+package ParteLogin;
+
+
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -10,11 +13,10 @@ public class Usuario{
 
 	private String email;
 	private String name;
-	private LocalDate fecha_ncto;
-	private float peso;
+	private Date fecha_ncto;
+	private double peso;
 	private String contrasenya;
 	private String frecuencia;
-	private List<Sesion> sesiones = new ArrayList<>();
 	
 	public String getEmail() {
 		return email;
@@ -46,22 +48,27 @@ public class Usuario{
 		this.name = name;
 	}
 	
-	public LocalDate getFecha_ncto() {
+	
+	public Date getFecha_ncto() {
 		return fecha_ncto;
 	}
-	
-	public void setFecha_ncto(LocalDate fecha_ncto) {
+
+
+	public void setFecha_ncto(Date fecha_ncto) {
 		this.fecha_ncto = fecha_ncto;
 	}
-	
-	public Float getPeso() {
+
+
+	public double getPeso() {
 		return peso;
 	}
-	
-	public void setPeso(Float peso) {
+
+
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
-	
+
+
 	public String getFrecuencia() {
 		return frecuencia;
 	}
@@ -69,21 +76,6 @@ public class Usuario{
 	public void setFrecuencia(String frecuencia) {
 		this.frecuencia = frecuencia;
 	}
-	
-	public List<Sesion> getSesiones() {
-		return sesiones;
-	}
-	
-	public void setSesiones(List<Sesion> sesiones) {
-		this.sesiones = sesiones;
-	}
-	
-	public void addSesiones(Sesion sesion) {
-		if (sesion != null && !this.sesiones.contains(sesion)) {
-			this.sesiones.add(sesion);
-		}
-	}
-	
 		
 	@Override
 	public String toString() {
@@ -101,8 +93,6 @@ public class Usuario{
 		result.append(" - (");
 		result.append(this.frecuencia);
 		result.append(" - (");
-		result.append(this.sesiones.size());
-		result.append(" sesiones)");
 		
 		return result.toString();
 	}
