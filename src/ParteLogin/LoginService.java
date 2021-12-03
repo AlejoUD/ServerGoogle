@@ -59,7 +59,7 @@ public class LoginService extends UnicastRemoteObject implements ILogin {
 	}
 
 	@Override
-	public String combrobarLogin() {
+	public String comprobarLogin() {
 		// TODO Auto-generated method stub
 		crearUsuarios();
 		String resultado;

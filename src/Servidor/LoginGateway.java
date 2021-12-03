@@ -10,7 +10,7 @@ public class LoginGateway {
 	private static LoginGateway instance;
 	private ILogin currencyConvService;
 	
-	private LoginGateway() {
+	public LoginGateway() {
 		try {		
 			String URL = "//127.0.0.1:1099/CurrencyExchange";
 			this.currencyConvService = (ILogin) Naming.lookup(URL);
@@ -31,7 +31,7 @@ public class LoginGateway {
 		System.out.println("   - Combrobando...");
 		
 		try {
-			return this.currencyConvService.combrobarLogin();
+			return this.currencyConvService.comprobarLogin();
 		} catch (Exception ex) {
 			System.out.println("   $ Error : " + ex.getMessage());
 			return "";
