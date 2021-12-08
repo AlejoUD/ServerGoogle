@@ -10,7 +10,7 @@ public class FactoryLogin {
 	public static LoginGateway createGatewayLogin(EnumTipoUser tipoUser) {
 		switch (tipoUser) {
 		case GOOGLE:
-			return login.getInstance().comprobar();
+			return null;
 //		case FACEBOOK:
 //			return new LoginGatewayFacebook();
 //		case LOCAL:
