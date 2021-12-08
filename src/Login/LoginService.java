@@ -1,4 +1,4 @@
-package ParteLogin;
+package Login;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginService extends UnicastRemoteObject implements ILogin {
@@ -19,6 +21,8 @@ public class LoginService extends UnicastRemoteObject implements ILogin {
 	
 	//Attribute for the Singleton pattern
 	public static LoginService instance;
+	private LoginAppService loginService = new LoginAppService();
+	private Map<Long, Usuario> serverState = new HashMap<>();
 			
 	private LoginService() throws RemoteException {
 		super();
@@ -44,7 +48,7 @@ public class LoginService extends UnicastRemoteObject implements ILogin {
 			ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 			user0.setContrasenya("$!9PhNz,");
 			user0.setEmail("thomas.e2001@gmail.com");
-			user0.setFecha_ncto(new Date(2001,11,12));
+			user0.setFecha_ncto(null);
 			user0.setFrecuencia("100");
 			user0.setName("Thomas");
 			user0.setPeso((float) 100.0);
@@ -71,5 +75,29 @@ public class LoginService extends UnicastRemoteObject implements ILogin {
 			resultado = "No esta registrado";
 		}
 		return resultado;
+	}
+
+	@Override
+	public long loginGoogle(String email, String password) throws RemoteException {
+		// TODO Auto-generated method stub
+		crearUsuarios();
+		System.out.println(" * RemoteFacade login(): " + email  + " / " + password);
+		
+		//Perform login() using LoginAppService
+		Usuario user = loginService.login(email, password);
+			
+		//If login() success user is stored in the Server State
+		if (user != null) {
+			//If user is not logged in 
+			if (!this.serverState.values().contains(user)) {
+				Long token = Calendar.getInstance().getTimeInMillis();		
+				this.serverState.put(token, user);		
+				return(token);
+			} else {
+				throw new RemoteException("User is already logged in!");
+			}
+		} else {
+			throw new RemoteException("Login fails!");
+		}
 	}
 }

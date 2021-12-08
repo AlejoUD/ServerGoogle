@@ -1,6 +1,9 @@
-package ParteLogin;
+package Servidor;
 
 import java.rmi.Naming;
+
+import Login.ILogin;
+import Login.LoginService;
 
 public class LoginServer {
 
