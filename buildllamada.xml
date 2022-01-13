@@ -23,7 +23,7 @@
 		<javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath" deprecation="true" fork="true" includeantruntime="no"/>
     </target>
 	<target name="2.server" depends="1.build" description="Runs the Server">
-		<java classname="Gateway.LoginGateway" classpathref="classpath" fork="true">
+		<java classname="Servicios.LoginAppService" classpathref="classpath" fork="true">
         	<jvmarg value="-Djava.rmi.server.codebase=file:${bin.dir}/"/>
 			<jvmarg value="-Djava.security.policy=${policy.file}"/>
         	<arg value="${rmiregistry.IP}"/> 
